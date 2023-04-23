@@ -17,7 +17,6 @@ public class Program
         var producerTask = ProduceAsync(channel.Writer);
         var consumerTask = ConsumeAsync(channel.Reader);
 
-
         // Wait for both tasks to complete.
         await Task.WhenAll(producerTask, consumerTask);
     }
@@ -44,7 +43,7 @@ public class Program
         await foreach (var number in channelReader.ReadAllAsync())
         {
             await Task.Delay(number);
-            Console.WriteLine($"Waited for {number}ms.");
+            Console.WriteLine($"Consumer waited for {number}ms.");
         }
     }
 }
